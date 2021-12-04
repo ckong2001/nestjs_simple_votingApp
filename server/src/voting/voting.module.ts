@@ -8,13 +8,12 @@ import { VotingRepository } from 'src/repositories/voting.repository';
 import { VotingOptionsRepository } from 'src/repositories/votingOptionRepository';
 import { VotingController } from './voting.controller';
 import { VotingService } from './voting.service';
-import { UserVoteGateway } from './socket/user-vote.gateway'
 @Module({
   imports: [
     TypeOrmModule.forFeature([VotingRepository,VotingOptionsRepository,UserRepository])
   ],
   controllers: [VotingController],
-  providers: [VotingService,UserVoteGateway],
+  providers: [VotingService],
   exports:[VotingService]
 })
 export class VotingModule {}

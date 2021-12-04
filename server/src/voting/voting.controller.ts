@@ -32,8 +32,13 @@ export class VotingController {
 
     @Post('userVote')
     @HttpCode(201)
-    async UserVote(@Body() request:UserVoteDTO) : Promise<User> {
-        return await this.votingService.userVote(request.hkId,request.votingOptionId)
+    async UserVote(@Body() request:UserVoteDTO) : Promise<{message:string}> {
+        let isVoteSuccess = await this.votingService.userVote(request.hkId,request.votingOptionId);
+        let message = "Your voting is successful";
+        message = isVoteSuccess? "Voting fail":message;
+        return {
+            message: message
+        }
     }
 
     @Get('/votingCount/:votingId')

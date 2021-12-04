@@ -33,7 +33,7 @@ export class AllVotingComponent implements OnInit, OnDestroy {
           return this.votingService.getAllVotings()
             .pipe(catchError(err => {
               // Handle errors
-              alert(err);
+              console.log(err);
               return of(undefined);
             }));
         }),

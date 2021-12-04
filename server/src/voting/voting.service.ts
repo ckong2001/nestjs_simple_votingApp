@@ -1,7 +1,5 @@
 import { BadRequestException, Get, Injectable } from '@nestjs/common';
 import { Voting } from 'src/entities/Voting';
-import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm';
 import { User } from 'src/entities/User';
 import { UserRepository } from 'src/repositories/user.repository';
 import { VotingOptions } from 'src/Entities/VotingOptions';
@@ -43,7 +41,7 @@ export class VotingService {
         return resultList
     }
     
-    async userVote(hkId, votingOptionId):Promise<User> {
+    async userVote(hkId, votingOptionId):Promise<boolean> {
 
         if(!isValidId(hkId))
             throw new BadRequestException('Invalid HKID');
@@ -65,12 +63,11 @@ export class VotingService {
 
         if(isUserAlreadyVoting)
             throw new BadRequestException('Duplicate vote for the user');
-
-        let user = await this.createUserVotingOption(hash,votingOptionId);
-        return user;
+        let isSucessful = await this.createUserVotingOption(hash,votingOptionId);
+        return isSucessful
     }
 
-    async createUserVotingOption(hkId:string,votingOptionId:string): Promise<User> {
+    async createUserVotingOption(hkId:string,votingOptionId:string): Promise<boolean> {
         let user = await this.userRepository.findByHKID(hkId);
         if(!user) {
             user = new User()
@@ -78,11 +75,15 @@ export class VotingService {
             user.options = [];
             user = await this.userRepository.save(user);
         }
-        let votingOption = await this.votingOptionRepository.findOne(votingOptionId);
-        if(!votingOption) return null;
+        let votingOption = await this.findVotingOption(votingOptionId);
+        if(!votingOption) return false;
         
         await this.userRepository.addVotingOption(user, votingOption);
-        return user;
+        return true;
+    }
+
+    async findVotingOption(id:string) {
+        return await this.votingOptionRepository.findOne(id);
     }
 
     async createVoting(title:string,start:Date,end:Date,votingOption:VotingOptions[]): Promise<Voting> {
