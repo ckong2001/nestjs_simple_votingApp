@@ -21,5 +21,35 @@ services:
       - 8080:8080
     depends_on: 
       - mysql
+  backend:
+      container_name: nestjs_voting_dev
+      image: nestjs-api-dev:1.0.0
+      working_dir: /app
+      build:
+        context: ./server
+        target: development
+        dockerfile: ./dockerfile
+      command: npm run start:dev
+      links:
+        - mysql
+      ports:
+        - 3000:3000
+      restart: unless-stopped
+      depends_on:
+        - mysql
+  frontend:
+    container_name: angular_voting_web_app
+    image: angular-simple-votiong-app:1.0.0
+    working_dir: /app
+    build:
+      context: ./client
+      dockerfile: ./dockerfile
+    ports:
+        - 4200:80
+    links:
+      - backend
+    restart: unless-stopped
+    depends_on:
+      - backend
 volumes:
   dataVolume:

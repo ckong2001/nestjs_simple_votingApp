@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:3000',
-  socket: 'http://localhost:3001',
+  backendUrl: 'http://localhost:3000/api',
   saltRounds: 1028
 };
 

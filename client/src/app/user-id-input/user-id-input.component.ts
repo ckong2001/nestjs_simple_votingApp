@@ -28,8 +28,4 @@ export class UserIdInputComponent implements OnInit {
     })
   }
 
-  onRealTimeSubmit() {
-    this.userVoteService.userVoteInSocket(this.votingOption.votingOptionId,this.hkId);
-  }
-
 }

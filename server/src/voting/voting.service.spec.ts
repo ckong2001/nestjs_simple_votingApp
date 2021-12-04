@@ -2,13 +2,13 @@ import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserRepository } from '../repositories/user.repository';
 
-import { VotingRepository } from 'src/repositories/voting.repository';
-import { VotingOptionsRepository } from 'src/repositories/votingOptionRepository';
+import { VotingRepository } from '../repositories/voting.repository';
+import { VotingOptionsRepository } from '../repositories/votingOptionRepository';
 import { VotingService } from './voting.service';
-import { Voting } from 'src/entities/Voting';
-import { User } from 'src/entities/User';
-import * as idValidator from 'src/utils/validateId';
-import { VotingOptions } from 'src/entities/VotingOptions';
+import { Voting } from '../entities/Voting';
+import { User } from '../entities/User';
+import * as idValidator from '../utils/validateId';
+import { VotingOptions } from '../entities/VotingOptions';
 
 describe('VotingService', () => {
   let votingService: VotingService;

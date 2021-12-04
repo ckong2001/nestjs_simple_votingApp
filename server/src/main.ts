@@ -10,8 +10,10 @@ async function bootstrap() {
   .setDescription('The voting app')
   .setVersion('1.0')
   .build()
+  app.setGlobalPrefix('api');
+
   const document = SwaggerModule.createDocument(app,config);
-  SwaggerModule.setup('api',app,document);
+  SwaggerModule.setup('swagger',app,document);
   app.enableCors();
   await app.listen(3000);
 }

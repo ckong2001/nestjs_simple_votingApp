@@ -1,5 +1,5 @@
-import { User } from "src/entities/User";
-import { VotingOptions } from "src/Entities/VotingOptions";
+import { User } from "../entities/User";
+import { VotingOptions } from "../entities/VotingOptions";
 import {EntityRepository, Repository} from "typeorm";
 
 @EntityRepository(User)
@@ -59,6 +59,13 @@ export class UserRepository extends Repository<User> {
                 .relation(User, "options")
                 .of(user)
                 .add(votingOption);
+
+        // let result = await this.find({
+        //     relations: ['options'],
+        //     where: { id: user.id }
+        // });
+        // result[0].options.push(votingOption);
+        // this.save(result[0])
     }
 
 }

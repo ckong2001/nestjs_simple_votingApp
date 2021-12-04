@@ -1,12 +1,12 @@
 import { BadRequestException, Get, Injectable } from '@nestjs/common';
-import { Voting } from 'src/entities/Voting';
-import { User } from 'src/entities/User';
-import { UserRepository } from 'src/repositories/user.repository';
-import { VotingOptions } from 'src/Entities/VotingOptions';
-import { VotingRepository } from 'src/repositories/voting.repository';
+import { Voting } from '../entities/Voting';
+import { User } from '../entities/User';
+import { UserRepository } from '../repositories/user.repository';
+import { VotingOptions } from '../entities/VotingOptions';
+import { VotingRepository } from '../repositories/voting.repository';
 import * as dayjs from 'dayjs'
-import { VotingOptionsRepository } from 'src/repositories/votingOptionRepository';
-import { isValidId } from 'src/utils/validateId';
+import { VotingOptionsRepository } from '../repositories/votingOptionRepository';
+import { isValidId } from '../utils/validateId';
 import { signKey } from '../utils/signKey'
 @Injectable()
 export class VotingService {
@@ -161,7 +161,8 @@ export class VotingService {
     }
 
     async getMostRecentlyEndedVoting():Promise<Voting> {
-        return await this.votingRepository.getMostRecentlyEndedVoting();
+        let result = await this.votingRepository.getMostRecentlyEndedVoting();
+        if(!result) return null;
     }
 
     async getVotingByVotingOptionId(votingOptionId:string) {

@@ -17,8 +17,7 @@ import { UserIdInputComponent } from './user-id-input/user-id-input.component';
 import { FormsModule } from '@angular/forms';
 import { MostRecentlyEndedComponent } from './most-recently-ended/most-recently-ended.component';
 import { SearchVotingComponent } from './search-voting/search-voting.component';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   {

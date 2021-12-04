@@ -3,8 +3,7 @@ import { Injectable, Input } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 // import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Voting } from '../all-voting/voting';
+import { environment } from '../../environments/environment';
 import { VotingOption } from './voting-option';
 
 @Injectable({
@@ -21,13 +20,5 @@ export class UserVoteService {
 
   userVote(votingOptionId:string, userHkId:string) {
     return this.http.post(`${environment.backendUrl}/voting/userVote`, { hkId: userHkId , votingOptionId:votingOptionId})
-  }
-
-  userVoteInSocket(votingOptionId:string, userHkId:string) {
-    // this.socket.emit('userVote', {
-    //   hkId: userHkId,
-    //   votingOptionId:votingOptionId
-    // });
-    // this.socket.emit('test',"asdad")
   }
 }

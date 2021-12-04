@@ -1,4 +1,4 @@
-import { VotingOptions } from "src/entities/VotingOptions";
+import { VotingOptions } from "../entities/VotingOptions";
 import {EntityRepository, Repository} from "typeorm";
 
 @EntityRepository(VotingOptions)

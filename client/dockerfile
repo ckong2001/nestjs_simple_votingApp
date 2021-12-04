@@ -1,16 +1,61 @@
 
-# Stage 1: build
-FROM node:14 AS development
+# # Stage 1: build
+# FROM node:14 AS development
 
-WORKDIR /thomas/frontend/src/app
+# WORKDIR /thomas/frontend/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install
-RUN npm install -g @angular/cli@12.2.0
+# RUN npm install
+# RUN npm install -g @angular/cli@12.2.0
 
-COPY . .
+# COPY . .
 
-RUN npm run build
+# RUN npm run build
 
-EXPOSE 4200
+# EXPOSE 4200
+
+#############
+### build ###
+#############
+
+# base image
+FROM node:14.17.0-alpine as build
+
+ARG ENV=dev
+
+# set working directory
+WORKDIR /app
+## add app
+COPY . /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+RUN npm install --no-fund && npm install -g @angular/cli@7.3.9
+
+
+# run tests
+#RUN ng test --watch=false
+#RUN ng e2e --port 4202
+
+# generate build
+RUN node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production --output-path=dist --base-href /main/ --deploy-url /main/
+############
+### prod ###
+############
+
+# base image
+FROM nginx:1.16.0-alpine
+
+# copy artifact build from the 'build environment'
+COPY --from=build /app/dist /usr/share/nginx/html
+#COPY dist/metronic /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# expose port 80
+EXPOSE 80
+
+# run nginx
+CMD ["nginx", "-g", "daemon off;"]

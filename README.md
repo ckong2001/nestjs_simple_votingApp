@@ -20,38 +20,12 @@ before typing the below command
 docker-compose up
 ```
 
-4. Open another cmd under directory 'nestjs_simple_votingAp' 
-```
-cd server
-```
-5. Use package manager npm to install dependencies for Nest.js application
-
-``` js
-npm install
-```
-6. Start the server 
-```js
-npm run start:dev
-```
-7. Open another cmd under directory 'nestjs_simple_votingAp'
-```
-cd client
-```
-8. Use package manager npm to install dependencies for Nest.js application  
-``` js
-npm install
-``` 
-9. Start the angular application
-```js
-npm run start
-```
-
-10. Go to localhost:4200
+4. Go to localhost:4200/main
 
 ## Remark
 
 1. How to create new voting 
-Currently, you can go to [localhost:3000/](http://localhost:3000/api/) and use
+Currently, you can go to [localhost:3000/swagger](http://localhost:3000/api/) and use
 the /voting/createVoting to create new voting
 
 

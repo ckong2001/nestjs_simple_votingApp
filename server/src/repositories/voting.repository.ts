@@ -1,8 +1,8 @@
-import { Voting } from "src/entities/Voting";
+import { Voting } from "../entities/Voting";
 import {EntityRepository, Repository} from "typeorm";
 import * as dayjs from 'dayjs'
 import * as _ from 'lodash'
-import { VotingOptions } from "src/entities/VotingOptions";
+import { VotingOptions } from "../entities/VotingOptions";
 @EntityRepository(Voting)
 export class VotingRepository extends Repository<Voting> {
     async getVotingByVotingOptionId(votingOptionId:string) {
@@ -154,6 +154,7 @@ export class VotingRepository extends Repository<Voting> {
                         .where('voting.end < :endTime', {endTime: now})
                         .orderBy('voting.end','DESC')
                         .getOne();
+        if(!voting) return null;
         let votingOption = await this.getVotingOptionWithCount(voting.id)
         voting['options'] = votingOption;
         return voting;

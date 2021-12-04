@@ -10,8 +10,7 @@ export class User {
 	hkId:	string
 
     // @ManyToMany(() => VotingOptions,{ cascade: ['insert', 'update'] })
-    @ManyToMany(() => VotingOptions, votingOption => votingOption.users)
-    @JoinTable()
+    @ManyToMany(() => VotingOptions,votingOptions => votingOptions.users)
     options: VotingOptions[];
 
     addVotingOption(item:VotingOptions) {

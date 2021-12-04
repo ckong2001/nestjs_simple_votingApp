@@ -1,10 +1,9 @@
 import { BadRequestException, Body, Controller, Get, HttpCode, Param, Post, Res } from '@nestjs/common';
-import { User } from 'src/entities/User';
-import { Voting } from 'src/entities/Voting';
-import { CreateVoteDTO } from 'src/models/dto/requests/create-voting.dto';
-import { UserVoteDTO } from 'src/models/dto/requests/user-vote.dto';
+import { Voting } from '../entities/Voting';
+import { CreateVoteDTO } from '../models/dto/requests/create-voting.dto';
+import { UserVoteDTO } from '../models/dto/requests/user-vote.dto';
 import { VotingService } from './voting.service';
-import { VotingOptions } from 'src/Entities/VotingOptions';
+import { VotingOptions } from '../entities/VotingOptions';
 import dayjs from 'dayjs';
 
 

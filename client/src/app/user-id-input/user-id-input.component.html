@@ -7,7 +7,6 @@
     <footer class="card-footer">
         <input class="input is-link" type="text" placeholder="Please input your HKID" [(ngModel)]="hkId">
         <button class="button is-success" (click)="onSubmit()">Submit</button>
-        <button class="button is-success" (click)="onRealTimeSubmit()">Submit in real time</button>
     </footer>
     <div class="notification is-danger" *ngIf="errorMsg">
         {{errorMsg}}

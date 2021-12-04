@@ -25,7 +25,7 @@ export class Voting {
     @Column({ type: 'timestamp' })
 	end: Date
    
-    @OneToMany(() => VotingOptions, votingOption => votingOption.voting,{ cascade: ['insert', 'update'] })
+    @OneToMany(() => VotingOptions, votingOption => votingOption.voting,{ cascade: true })
     options: VotingOptions[];
 
 }
