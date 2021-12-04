@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    column-gap: 10px;
+}
+
+.voting-listing {
+    margin-top: 20px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover  {
+    background-color: #5588AF;
+    color:white;
+}
+
+::ng-deep .modal-backdrop {
+    z-index: 1 !important ;
+}
+
+.modal-backdrop.fade {
+    opacity: 0.7;
+}

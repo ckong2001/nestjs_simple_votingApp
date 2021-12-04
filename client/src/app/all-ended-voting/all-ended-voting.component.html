@@ -1,0 +1,24 @@
+<div class="content">
+    <div class="container">
+        <ng-container *ngFor="let voting of allEndedVoting;">          
+            <div class="tile is-parent">
+              <article class="tile is-child box clickable">
+                <p class="title">{{voting.title}}</p>
+                <label>Start</label><p class="title">{{voting.start}}</p>
+                <label>End</label><p class="title">{{voting.end}}</p>
+                <div class="card">
+                    <ng-container *ngFor="let votingOption of voting['option'];">
+                        <p class="card-footer-item">
+                            <span>
+                                {{votingOption.value}}
+                            </span>
+                            <span class="tag is-link is-normal">{{votingOption.count}}</span>
+                        </p>                      
+                    </ng-container>
+                </div>            
+              </article>
+            </div>
+      </ng-container>  
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+
+
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        {{voting.title}}
+      </p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="time d-flex">
+            <span class="time-text">Start Time</span>
+            <time datetime="voting.start">{{voting.start}}</time>    
+        </div>
+        <div class="time d-flex">
+            <span class="time-text">End Time</span>
+            <time datetime="voting.start">{{voting.end}}</time>    
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <ng-container *ngFor="let votingOption of votingOptions;">  
+        <div class="option d-flex" (click)="onOptionClick(votingOption)">
+            <a href="#" class="card-footer-item">{{votingOption.value}}</a>
+            <span class="tag is-link is-normal">{{votingOption.usersCount}}</span>
+        </div>        
+      </ng-container>  
+    </footer>
+  </div>
+  

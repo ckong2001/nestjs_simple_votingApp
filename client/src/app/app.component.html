@@ -1,0 +1,14 @@
+<ng-container>
+  <div class="main">
+    <div class="tabs is-centered">
+      <ul>
+        <li [routerLink]="['/all']" [routerLinkActive]="['is-active']"><a>All</a></li>
+        <li [routerLink]="['/endedVoting']" [routerLinkActive]="['is-active']"><a>Ended</a></li>
+        <li [routerLink]="['/mostRecentlyEnded']" [routerLinkActive]="['is-active']"><a>Most recently Ended</a></li>
+        <li [routerLink]="['/search']" [routerLinkActive]="['is-active']"><a> Search</a></li>
+        <li><a>Add Votings</a></li>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>

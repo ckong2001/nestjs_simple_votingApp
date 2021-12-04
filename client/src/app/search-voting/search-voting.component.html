@@ -1,0 +1,36 @@
+<ng-container>
+    <div class="container">
+        <input type="text"
+            ngxDaterangepickerMd
+            [timePicker]="true"
+            [timePickerSeconds]="true"
+            [timePickerIncrement]="1"
+            [timePicker24Hour]="true"
+            [locale]="{format: 'DD/MM/YYYY HH:mm:ss', firstDay: 1}"
+            [(ngModel)]="selected"
+            (choosedDate)="choosedDate($event)"
+            class="form-control"
+            placeholder="Please the date time range"
+            [ranges]="ranges"
+        />
+        <button class="button is-primary" (click)="onSearchClick()">Search</button>
+    </div>
+    <div class="voting-listing">
+        <div class="tile is-ancestor">
+            <ng-container *ngFor="let voting of votings;">          
+                <div class="tile is-parent">
+                  <article class="tile is-child box clickable" (click)="onTitleClick(voting)">
+                    <p class="title">{{voting.title}}</p>
+                    <div class="card">
+                        <p class="card-footer-item">
+                            <span>User Count:</span>
+                            <span class="tag is-link is-normal">{{voting.userVoteCount}}</span>
+                        </p>                      
+                    </div>            
+                  </article>
+                </div>
+          </ng-container>  
+        </div>
+    
+    </div>
+</ng-container>

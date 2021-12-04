@@ -1,0 +1,32 @@
+.card {
+    display: flex;
+    flex-direction: row !important;
+}
+.card-footer-item{
+    margin-bottom: 0px !important;
+    column-gap: 10px;
+}
+
+.notification {
+    margin-top:1rem;
+    background-color: #B6E2EC;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover  {
+    background-color: #B6E2EC;
+}
+
+::ng-deep .modal-backdrop {
+    z-index: 1 !important ;
+}
+
+.modal-backdrop.fade {
+    opacity: 0.7;
+}
+
+
+  
