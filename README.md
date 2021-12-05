@@ -17,7 +17,7 @@ cd nestjs_simple_votingAp
 3. Install Docker Desktop or Docker cli
 before typing the below command
 ```docker
-docker-compose up
+docker-compose up -d
 ```
 
 4. Go to localhost:4200/main
@@ -25,8 +25,8 @@ docker-compose up
 ## Remark
 
 1. How to create new voting 
-Currently, you can go to [localhost:3000/swagger](http://localhost:3000/api/) and use
-the /voting/createVoting to create new voting
+Currently, you can go to [localhost:3000/swagger](http://localhost:3000/api/) and try
+the restful api /api/voting/createVoting to create new voting
 
 
 
