@@ -6,5 +6,5 @@ export interface Voting {
   start:string;
   end:string;
   option: Array<VotingOption>;
-  };
+};
   

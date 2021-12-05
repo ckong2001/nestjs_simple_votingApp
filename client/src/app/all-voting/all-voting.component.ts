@@ -41,6 +41,7 @@ export class AllVotingComponent implements OnInit, OnDestroy {
       )
       .subscribe(data => {
         this.votings = data;
+        this.votings = this.votings?.map(o => ({...o,start: new Date(o.start).toLocaleString(),end: new Date(o.end).toLocaleString()}))
       });
   }
 
